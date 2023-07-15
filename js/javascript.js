@@ -22,3 +22,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
         return cost;
     };
+
+    // Create an array to store the ordered pizzas
+    const orderedPizzas = [];
