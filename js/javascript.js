@@ -25,3 +25,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     // Create an array to store the ordered pizzas
     const orderedPizzas = [];
+
+    // Event listener for the Add Pizza button
+    const addPizzaBtn = document.getElementById('add-pizza-btn');
+    addPizzaBtn.addEventListener('click', function () {
