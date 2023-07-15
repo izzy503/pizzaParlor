@@ -2,8 +2,19 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
-  }
-  
-  h1 {
+}
+
+h1 {
     text-align: center;
-  }
+}
+
+#toppings,
+#size {
+    margin-bottom: 20px;
+}
+
+#result {
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
