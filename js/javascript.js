@@ -13,3 +13,12 @@ window.addEventListener('DOMContentLoaded', function () {
             medium: 10,
             large: 12
         };
+
+        // Define the additional cost for each topping
+        const toppingCost = 1.5;
+
+        // Calculate the cost based on size and toppings
+        let cost = sizeCosts[this.size] + (this.toppings.length * toppingCost);
+
+        return cost;
+    };
