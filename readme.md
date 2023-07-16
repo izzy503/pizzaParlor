@@ -49,3 +49,18 @@ Pizza.prototype.calculateCost = function() {
 
   return cost;
 };
+Feel free to customize the HTML and CSS files to match your preferred styling and design.
+
+# Contributing
+
+Contributions are welcome! If you have any ideas, suggestions, or improvements, feel free to open an issue or submit a pull request.
+
+# License
+
+This project is licensed under the BSD-2-Clause License. See the LICENSE file for details.
+
+For any issues or concerns, please contact me at ipadilla2280@gmail.com.
+
+© July 16, 2023, Israel Padilla
+
+***Please note that this is just a sample README.md file created for this project, and you may need to modify it further to suit your specific project and requirements.***
