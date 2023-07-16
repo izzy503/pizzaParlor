@@ -75,7 +75,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 
     // Event listener for the Delivery checkbox
-    const deliveryCheckbox = document.getElementById('delivery-checkbox');
+    const deliveryCheckboxElement = document.getElementById('delivery-checkbox');
     deliveryCheckbox.addEventListener('change', function () {
         const addressSection = document.getElementById('address-section');
         if (this.checked) {
