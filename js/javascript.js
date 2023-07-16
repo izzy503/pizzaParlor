@@ -61,8 +61,63 @@ window.addEventListener('DOMContentLoaded', function () {
         pizzaLink.addEventListener('click', function () {
             displayPizzaDetails(pizzaIndex);
         });
-
         const listItem = document.createElement('li');
         listItem.appendChild(pizzaLink);
         orderSummary.appendChild(listItem);
     });
+
+    // Function to display the details of a specific pizza
+    function displayPizzaDetails(pizzaIndex) {
+        const pizza = orderedPizzas[pizzaIndex];
+        console.log(`Pizza ${pizzaIndex + 1} Details:`);
+        console.log('Toppings:', pizza.toppings);
+        console.log('Size:', pizza.size);
+    }
+
+    // Event listener for the Delivery checkbox
+    const deliveryCheckbox = document.getElementById('delivery-checkbox');
+    deliveryCheckbox.addEventListener('change', function () {
+        const addressSection = document.getElementById('address-section');
+        if (this.checked) {
+            addressSection.style.display = 'block';
+            console.log('Delivery option selected');
+        } else {
+            addressSection.style.display = 'none';
+            console.log('Delivery option deselected');
+        }
+    });
+
+    // Event listener for the Calculate Cost button
+    const calculateBtn = document.getElementById('calculate-btn');
+    calculateBtn.addEventListener('click', function () {
+        // Get the selected toppings
+        const toppings = [];
+        const checkboxes = document.querySelectorAll('input[name="topping"]:checked');
+        checkboxes.forEach(function (checkbox) {
+            toppings.push(checkbox.value);
+        });
+
+        // Get the selected size
+        const sizeRadios = document.getElementsByName('size');
+        let size = '';
+        sizeRadios.forEach(function (radio) {
+            if (radio.checked) {
+                size = radio.value;
+            }
+        });
+
+        // Create a new pizza object
+        const pizza = new Pizza(toppings, size);
+        console.log('Selected Pizza:', pizza);
+
+        // Calculate the cost
+        const cost = pizza.calculateCost();
+        console.log('Cost:', cost);
+
+        // Create a new order with the pizza
+        const order = new Order([pizza]);
+        console.log('Created Order:', order);
+
+        // Calculate the total cost of the order
+        const totalCost = order.calculateTotalCost();
+        console.log('Total Cost:', totalCost);
