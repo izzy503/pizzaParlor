@@ -172,8 +172,14 @@ console.log(cost);
 // Expected Output: The calculated cost of the pizza
 
 // Test Order Constructor
-const pizza1 = new Pizza(["cheese" , "pepperoni"], "large");
-const pizza2 = new Pizza(["mushrooms" , "olives"], "medium");
-const myOrder = new Order(pizza1, pizza2]);
+const pizza1 = new Pizza(["cheese", "pepperoni"], "large");
+const pizza2 = new Pizza(["mushrooms", "olives"], "medium");
+const myOrder = new Order([pizza1, pizza2]);
 console.log(myOrder);
 //Expected Output: Order object with pizzas
+
+// Test Order Prototype Method - CalculateTotalCost()
+const totalCost = myOrder.calculateTotalCost();
+console.log(totalCost);
+// Expected Output: the calculated total cost of the order
+
