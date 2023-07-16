@@ -5,6 +5,7 @@ window.addEventListener('DOMContentLoaded', function () {
         this.size = size;
         console.log('Pizza object created:', this);
     }
+
     // Prototype method to calculate the cost of a pizza
     Pizza.prototype.calculateCost = function () {
         // Define the base cost for each size
@@ -52,19 +53,28 @@ window.addEventListener('DOMContentLoaded', function () {
         // Add the pizza to the ordered pizzas array
         orderedPizzas.push(pizza);
 
-        // Display the ordered pizzas as links
-        const orderSummary = document.getElementById('order-summary');
-        const pizzaIndex = orderedPizzas.length - 1;
-        const pizzaLink = document.createElement('a');
-        pizzaLink.textContent = `Pizza ${pizzaIndex + 1}`;
-        pizzaLink.href = '#';
-        pizzaLink.addEventListener('click', function () {
-            displayPizzaDetails(pizzaIndex);
-        });
-        const listItem = document.createElement('li');
-        listItem.appendChild(pizzaLink);
-        orderSummary.appendChild(listItem);
+        // Update the order summary
+        updateOrderSummary();
     });
+
+    // Function to update the order summary
+    function updateOrderSummary() {
+        const orderSummary = document.getElementById('order-summary');
+        orderSummary.innerHTML = '';
+
+        // Display the ordered pizzas as links with dollar amounts
+        orderedPizzas.forEach(function (pizza, index) {
+            const pizzaLink = document.createElement('a');
+            pizzaLink.textContent = `Pizza ${index + 1} - $${pizza.calculateCost().toFixed(2)}`;
+            pizzaLink.href = '#';
+            pizzaLink.addEventListener('click', function () {
+                displayPizzaDetails(index);
+            });
+            const listItem = document.createElement('li');
+            listItem.appendChild(pizzaLink);
+            orderSummary.appendChild(listItem);
+        });
+    }
 
     // Function to display the details of a specific pizza
     function displayPizzaDetails(pizzaIndex) {
@@ -76,7 +86,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     // Event listener for the Delivery checkbox
     const deliveryCheckboxElement = document.getElementById('delivery-checkbox');
-    deliveryCheckbox.addEventListener('change', function () {
+    deliveryCheckboxElement.addEventListener('change', function () {
         const addressSection = document.getElementById('address-section');
         if (this.checked) {
             addressSection.style.display = 'block';
@@ -87,48 +97,38 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Event listener for the Calculate Cost button
-    const calculateBtn = document.getElementById('calculate-btn');
-    calculateBtn.addEventListener('click', function () {
-        // Get the selected toppings
-        const toppings = [];
-        const checkboxes = document.querySelectorAll('input[name="topping"]:checked');
-        checkboxes.forEach(function (checkbox) {
-            toppings.push(checkbox.value);
+    // Event listener for the delivery address form
+    const addressForm = document.getElementById('address-form');
+    addressForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        // Calculate the total cost of the order
+        const totalCost = calculateTotalCost();
+
+        // Display the total cost
+        console.log('Total Cost: $' + totalCost.toFixed(2));
+    });
+
+    // Function to calculate the total cost of the order
+    function calculateTotalCost() {
+        let totalCost = 0;
+
+        // Calculate the cost for each pizza and sum them up
+        orderedPizzas.forEach(function (pizza) {
+            totalCost += pizza.calculateCost();
         });
 
-        // Get the selected size
-        const sizeRadios = document.getElementsByName('size');
-        let size = '';
-        sizeRadios.forEach(function (radio) {
-            if (radio.checked) {
-                size = radio.value;
-            }
-        });
-
-        // Create a new pizza object
-        const pizza = new Pizza(toppings, size);
-        console.log('Selected Pizza:', pizza);
-
-        // Calculate the cost
-        const cost = pizza.calculateCost();
-        console.log('Cost:', cost);
-
-        // Create a new order with the pizza
-        const order = new Order([pizza]);
-        console.log('Created Order:', order);
-
-        // Display the result
-        const resultDiv = document.getElementById('result');
-        resultDiv.textContent = `Total Cost: $${totalCost}`;
-
-        // Check if delivery is selected and display address if applicable
+        // Check if delivery is selected and add delivery cost
         const deliveryCheckbox = document.getElementById('delivery-checkbox');
         if (deliveryCheckbox.checked) {
-            const addressInput = document.getElementById('address');
-            console.log('Delivery Address:', addressInput.value);
+            // Define the delivery cost
+            const deliveryCost = 5;
+            // Add delivery cost to the total cost
+            totalCost += deliveryCost;
         }
-    });
+
+        return totalCost;
+    }
 
     // Order constructor
     function Order(pizzas) {
@@ -136,50 +136,27 @@ window.addEventListener('DOMContentLoaded', function () {
         console.log('Order object created:', this);
     }
 
-    // Display the result
-    const resultDiv = document.getElementById('result');
-    resultDiv.textContent = `Total Cost: $${totalCost}`;
+    // Prototype method to calculate the total cost of an order
+    Order.prototype.calculateTotalCost = function () {
+        let totalCost = 0;
 
-    // Check if delivery is selected and display address if applicable
-    const deliveryCheckbox = document.getElementById('delivery-checkbox');
-    if (deliveryCheckbox.checked) {
-        const addressInput = document.getElementById('address');
-        console.log('Delivery Address:', addressInput.value);
-    }
+        // Calculate the cost for each pizza and sum them up
+        this.pizzas.forEach(function (pizza) {
+            totalCost += pizza.calculateCost();
+        });
+
+        return totalCost;
+    };
+
+    // Test the Pizza constructor and prototype method
+    const myPizza = new Pizza(["anchovies", "pineapple"], "medium");
+    console.log('Pizza constructor test:', myPizza);
+    const pizzaCost = myPizza.calculateCost();
+    console.log('Pizza calculateCost() test:', '$' + pizzaCost.toFixed(2));
+
+    // Test the Order constructor and prototype method
+    const myOrder = new Order([myPizza]);
+    console.log('Order constructor test:', myOrder);
+    const orderTotalCost = myOrder.calculateTotalCost();
+    console.log('Order calculateTotalCost() test:', '$' + orderTotalCost.toFixed(2));
 });
-
-// Order constructor
-function Order(pizzas) {
-    this.pizzas = pizzas;
-    console.log('Order object created:', this);
-}
-
-// Prototype method to calculate the total cost of an order
-Order.prototype.calculateTotalCost = function () {
-    let totalCost = 0;
-
-    //Calculate the cost for each pizza and sub them up
-    this.pizzas.forEach(function (pizza) {
-        totalCost += pizza.calculateCost();
-    });
-
-    return totalCost;
-};
-
-// Test Pizza Constructor
-const myPizza = new Pizza(["anchovies", "pineapple"], "medium");
-console.log(cost);
-// Expected Output: The calculated cost of the pizza
-
-// Test Order Constructor
-const pizza1 = new Pizza(["cheese", "pepperoni"], "large");
-const pizza2 = new Pizza(["mushrooms", "olives"], "medium");
-const myOrder = new Order([pizza1, pizza2]);
-console.log(myOrder);
-//Expected Output: Order object with pizzas
-
-// Test Order Prototype Method - CalculateTotalCost()
-const totalCost = myOrder.calculateTotalCost();
-console.log(totalCost);
-// Expected Output: the calculated total cost of the order
-
