@@ -35,3 +35,12 @@ window.addEventListener('DOMContentLoaded', function () {
         checkboxes.forEach(function (checkbox) {
             toppings.push(checkbox.value);
         });
+
+        // Get the selected size
+        const sizeRadios = document.getElementsByName('size');
+        let size = '';
+        sizeRadios.forEach(function (radio) {
+            if (radio.checked) {
+                size = radio.value;
+            }
+        });
