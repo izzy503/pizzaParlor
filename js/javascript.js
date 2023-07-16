@@ -118,6 +118,38 @@ window.addEventListener('DOMContentLoaded', function () {
         const order = new Order([pizza]);
         console.log('Created Order:', order);
 
-        // Calculate the total cost of the order
-        const totalCost = order.calculateTotalCost();
-        console.log('Total Cost:', totalCost);
+        // Display the result
+        const resultDiv = document.getElementById('result');
+        resultDiv.textContent = `Total Cost: $${totalCost}`;
+
+        // Check if delivery is selected and display address if applicable
+        const deliveryCheckbox = document.getElementById('delivery-checkbox');
+        if (deliveryCheckbox.checked) {
+            const addressInput = document.getElementById('address');
+            console.log('Delivery Address:', addressInput.value);
+        }
+    });
+
+    // Order constructor
+    function Order(pizzas) {
+        this.pizzas = pizzas;
+        console.log('Order object created:', this);
+    }
+
+    // Display the result
+    const resultDiv = document.getElementById('result');
+    resultDiv.textContent = `Total Cost: $${totalCost}`;
+
+    // Check if delivery is selected and display address if applicable
+    const deliveryCheckbox = document.getElementById('delivery-checkbox');
+    if (deliveryCheckbox.checked) {
+        const addressInput = document.getElementById('address');
+        console.log('Delivery Address:', addressInput.value);
+    }
+});
+
+// Order constructor
+function Order(pizzas) {
+    this.pizzas = pizzas;
+    console.log('Order object created:', this);
+}
