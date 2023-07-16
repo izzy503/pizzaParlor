@@ -29,3 +29,9 @@ window.addEventListener('DOMContentLoaded', function () {
     // Event listener for the Add Pizza button
     const addPizzaBtn = document.getElementById('add-pizza-btn');
     addPizzaBtn.addEventListener('click', function () {
+        // Get the selected toppings
+        const toppings = [];
+        const checkboxes = document.querySelectorAll('input[name="topping"]:checked');
+        checkboxes.forEach(function (checkbox) {
+            toppings.push(checkbox.value);
+        });
