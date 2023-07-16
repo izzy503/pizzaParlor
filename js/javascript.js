@@ -155,15 +155,21 @@ function Order(pizzas) {
 }
 
 // Prototype method to calculate the total cost of an order
-Order.prototype.calculateTotalCost = function() {
-  let totalCost = 0;
-  
-  //Calculate the cost for each pizza and sub them up
-  this.pizzas.forEach(function(pizza) {
-    totalCost += pizza.calculateCost();
-  });
-  
-  return totalCost;
+Order.prototype.calculateTotalCost = function () {
+    let totalCost = 0;
+
+    //Calculate the cost for each pizza and sub them up
+    this.pizzas.forEach(function (pizza) {
+        totalCost += pizza.calculateCost();
+    });
+
+    return totalCost;
 };
 
 // Test Pizza Constructor
+const myPizza = new Pizza(["anchovies", "pineapple"], "medium");
+console.log(cost);
+// Expected Output: The calculated cost of the pizza
+
+// Test Order Constructor
+const pizza1 = new Pizza(["cheese" , "pepperoni"], "large");
