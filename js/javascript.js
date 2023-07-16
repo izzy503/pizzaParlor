@@ -44,3 +44,10 @@ window.addEventListener('DOMContentLoaded', function () {
                 size = radio.value;
             }
         });
+
+        // Create a new pizza object
+        const pizza = new Pizza(toppings, size);
+        console.log('Pizza added:', pizza);
+
+        // Add the pizza to the ordered pizzas array
+        orderedPizzas.push(pizza);
