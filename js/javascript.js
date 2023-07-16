@@ -51,3 +51,13 @@ window.addEventListener('DOMContentLoaded', function () {
 
         // Add the pizza to the ordered pizzas array
         orderedPizzas.push(pizza);
+
+        // Display the ordered pizzas as links
+        const orderSummary = document.getElementById('order-summary');
+        const pizzaIndex = orderedPizzas.length - 1;
+        const pizzaLink = document.createElement('a');
+        pizzaLink.textContent = `Pizza ${pizzaIndex + 1}`;
+        pizzaLink.href = '#';
+        pizzaLink.addEventListener('click', function () {
+            displayPizzaDetails(pizzaIndex);
+        });
