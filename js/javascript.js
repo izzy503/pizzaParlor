@@ -61,3 +61,8 @@ window.addEventListener('DOMContentLoaded', function () {
         pizzaLink.addEventListener('click', function () {
             displayPizzaDetails(pizzaIndex);
         });
+
+        const listItem = document.createElement('li');
+        listItem.appendChild(pizzaLink);
+        orderSummary.appendChild(listItem);
+    });
