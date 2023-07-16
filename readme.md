@@ -7,3 +7,14 @@ This is a simple web application for a pizza company where users can choose indi
 Choose one or more toppings for the pizza.
 Select a size for the pizza.
 See the final cost of the pizza based on the toppings and size.
+
+# Technologies Used
+
+HTML
+CSS
+JavaScript
+Usage
+
+# Clone the repository:
+
+git clone hhttps://github.com/izzy503/pizzaParlor.git
