@@ -1,49 +1,52 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Pizza Order</title>
-    <link rel+"stylesheet" type="" text/css href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pizza Parlor</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
+<body>
+  <h1>Pizza Parlor</h1>
 
-<body></body>
-<h1>Pizza Order</h1>
+  <h2>Order Form</h2>
 
-<div id="toppings">
-    <h2>Toppings</h2>
-    <label><input type="checkbox" name="topping" value="cheese">Cheese</label>
-    <label><input type="checkbox" name="topping" value="pepperoni">Pepperoni</label>
-    <label><input type="checkbox" name="topping" value="artichoke">Artichoke</label>
-    <label><input type="checkbox" name="topping" value="anchovy">Anchovy</label>
-</div>
+  <div id="pizza-form">
+    <h3>Select Toppings:</h3>
+    <label><input type="checkbox" name="topping" value="cheese"> Cheese</label>
+    <label><input type="checkbox" name="topping" value="pepperoni"> Pepperoni</label>
+    <label><input type="checkbox" name="topping" value="artichoke"> Artichoke</label>
+    <label><input type="checkbox" name="topping" value="anchovy"> Anchovy</label>
+    <!-- Add more toppings as needed -->
 
-<div id="size">
-    <h2>Size</h2>
-    <label><input type="radio" name="size" value="small">Small</label>
-    <label><input type="radio" name="size" value="medium">Medium</label>
-    <label><input type="radio" name="size" value="large">Large</label>
-</div>
+    <h3>Select Size:</h3>
+    <label><input type="radio" name="size" value="small" checked> Small</label>
+    <label><input type="radio" name="size" value="medium"> Medium</label>
+    <label><input type="radio" name="size" value="large"> Large</label>
 
-<button id="add-pizza-btn">Add Pizza</button>
-<h2>Order Summary</h2>
-<ul id="order-summary"></ul>
+    <button id="add-pizza-btn">Add Pizza</button>
+  </div>
 
-<div id="delivery-option">
-    <h2>Delivery</h2>
-    <label><input type="checkbox" id="delivery-checkbox">I want delivery</label>
-</div>
+  <h2>Order Summary</h2>
+  <ul id="order-summary"></ul>
 
-<div id="address-section" style="display: none;">
-    <h2>Address</h2>
-    <label for="address">Address:</label>
-    <input type="text" id="address" name="address">
-</div>
+  <h2>Delivery Option</h2>
+  <label><input type="checkbox" id="delivery-checkbox"> Delivery</label>
 
-<button id="calculate-btn">Calculate Cost</button>
+  <div id="address-section" style="display: none;">
+    <h3>Delivery Address:</h3>
+    <form id="address-form">
+      <input type="text" placeholder="Street Address" required>
+      <input type="text" placeholder="City" required>
+      <input type="text" placeholder="State" required>
+      <input type="text" placeholder="Zip Code" required>
+      <button type="submit">Calculate Cost</button>
+    </form>
+  </div>
 
-<div id="result"></div>
+  <h2>Total Cost</h2>
+  <p id="total-cost"></p>
 
-<script src="js/javascript.js"></script>
+  <script src="javascript.js"></script>
 </body>
-
 </html>
