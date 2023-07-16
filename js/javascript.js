@@ -153,3 +153,17 @@ function Order(pizzas) {
     this.pizzas = pizzas;
     console.log('Order object created:', this);
 }
+
+// Prototype method to calculate the total cost of an order
+Order.prototype.calculateTotalCost = function() {
+  let totalCost = 0;
+  
+  //Calculate the cost for each pizza and sub them up
+  this.pizzas.forEach(function(pizza) {
+    totalCost += pizza.calculateCost();
+  });
+  
+  return totalCost;
+};
+
+// Test Pizza Constructor
