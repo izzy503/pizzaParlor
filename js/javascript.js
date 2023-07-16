@@ -12,14 +12,14 @@ window.addEventListener('DOMContentLoaded', function () {
         const sizeCosts = {
             small: 8,
             medium: 10,
-            large: 12
+            large: 12,
         };
 
         // Define the additional cost for each topping
         const toppingCost = 1.5;
 
         // Calculate the cost based on size and toppings
-        let cost = sizeCosts[this.size] + (this.toppings.length * toppingCost);
+        let cost = sizeCosts[this.size] + this.toppings.length * toppingCost;
 
         return cost;
     };
@@ -32,7 +32,9 @@ window.addEventListener('DOMContentLoaded', function () {
     addPizzaBtn.addEventListener('click', function () {
         // Get the selected toppings
         const toppings = [];
-        const checkboxes = document.querySelectorAll('input[name="topping"]:checked');
+        const checkboxes = document.querySelectorAll(
+            'input[name="topping"]:checked'
+        );
         checkboxes.forEach(function (checkbox) {
             toppings.push(checkbox.value);
         });
@@ -65,7 +67,9 @@ window.addEventListener('DOMContentLoaded', function () {
         // Display the ordered pizzas as links with dollar amounts
         orderedPizzas.forEach(function (pizza, index) {
             const pizzaLink = document.createElement('a');
-            pizzaLink.textContent = `Pizza ${index + 1} - $${pizza.calculateCost().toFixed(2)}`;
+            pizzaLink.textContent = `Pizza ${index + 1} - $${pizza
+                .calculateCost()
+                .toFixed(2)}`;
             pizzaLink.href = '#';
             pizzaLink.addEventListener('click', function () {
                 displayPizzaDetails(index);
@@ -88,24 +92,32 @@ window.addEventListener('DOMContentLoaded', function () {
     const deliveryCheckboxElement = document.getElementById('delivery-checkbox');
     deliveryCheckboxElement.addEventListener('change', function () {
         const addressSection = document.getElementById('address-section');
+        const totalCostElement = document.getElementById('total-cost');
+
         if (this.checked) {
             addressSection.style.display = 'block';
+            totalCostElement.textContent = `Total Cost: $${calculateTotalCost().toFixed(
+                2
+            )}`;
             console.log('Delivery option selected');
         } else {
             addressSection.style.display = 'none';
+            totalCostElement.textContent = '';
             console.log('Delivery option deselected');
         }
     });
 
-    // Event listener for the delivery address form
-    const addressForm = document.getElementById('address-form');
-    addressForm.addEventListener('submit', function (event) {
+    // Event listener for the Calculate Cost button
+    const calculateCostBtn = document.getElementById('calculate-cost-btn');
+    calculateCostBtn.addEventListener('click', function (event) {
         event.preventDefault();
 
         // Calculate the total cost of the order
         const totalCost = calculateTotalCost();
 
         // Display the total cost
+        const totalCostElement = document.getElementById('total-cost');
+        totalCostElement.textContent = `Total Cost: $${totalCost.toFixed(2)}`;
         console.log('Total Cost: $' + totalCost.toFixed(2));
     });
 
@@ -149,7 +161,7 @@ window.addEventListener('DOMContentLoaded', function () {
     };
 
     // Test the Pizza constructor and prototype method
-    const myPizza = new Pizza(["anchovies", "pineapple"], "medium");
+    const myPizza = new Pizza(['anchovies', 'pineapple'], 'medium');
     console.log('Pizza constructor test:', myPizza);
     const pizzaCost = myPizza.calculateCost();
     console.log('Pizza calculateCost() test:', '$' + pizzaCost.toFixed(2));
