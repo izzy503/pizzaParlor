@@ -18,3 +18,34 @@ Usage
 # Clone the repository:
 
 git clone hhttps://github.com/izzy503/pizzaParlor.git
+
+1. Open the index.html file in your web browser.
+2. Select the desired toppings by checking the checkboxes.
+3. Choose a size for the pizza by selecting a radio button.
+4. Click the "Calculate Cost" button.
+5. The total cost of the pizza will be displayed on the page.
+
+# Known Bugs
+
+None found.
+
+# Customization
+
+You can customize the toppings, sizes, and cost calculation by modifying the JavaScript code in the javascript.js file. Update the topping options, size options, and the formula for calculating the cost in the Pizza constructor and calculateCost prototype method.
+// Example modification in the Pizza constructor
+function Pizza(toppings, size) {
+  // Add or modify the toppings and size options here
+  this.toppings = toppings;
+  this.size = size;
+}
+
+// Example modification in the calculateCost prototype method
+Pizza.prototype.calculateCost = function() {
+  // Modify the formula for calculating the cost here
+  // based on the toppings and size selected
+  let cost = 0;
+
+  // Your custom calculation logic goes here
+
+  return cost;
+};
