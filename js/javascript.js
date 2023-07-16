@@ -173,3 +173,7 @@ console.log(cost);
 
 // Test Order Constructor
 const pizza1 = new Pizza(["cheese" , "pepperoni"], "large");
+const pizza2 = new Pizza(["mushrooms" , "olives"], "medium");
+const myOrder = new Order(pizza1, pizza2]);
+console.log(myOrder);
+//Expected Output: Order object with pizzas
