@@ -1,3 +1,4 @@
+//Business Logic
 window.addEventListener('DOMContentLoaded', function () {
     // Pizza constructor
     function Pizza(toppings, size) {
