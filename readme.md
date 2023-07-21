@@ -29,6 +29,21 @@ git clone hhttps://github.com/izzy503/pizzaParlor.git
 
 None found.
 
+# Test
+    // Test 1: It should return the value of total cost of pizza based on size and toppings
+    code:let costOfMedium = 10 let NumberOfToppings = 1 let toppingCost = 1.5 
+    let cost = costOfMedium + numberOfToppings * toppingCost;
+    Expected Output: 11.50
+    
+    // Test the Pizza constructor and prototype method
+    const myPizza = new Pizza(['anchovies', 'pineapple'], 'medium');
+    const pizzaCost = myPizza.calculateCost();
+
+
+    // Test the Order constructor and prototype method
+    const myOrder = new Order([myPizza]);
+    const orderTotalCost = myOrder.calculateTotalCost();
+
 # Customization
 
 You can customize the toppings, sizes, and cost calculation by modifying the JavaScript code in the javascript.js file. Update the topping options, size options, and the formula for calculating the cost in the Pizza constructor and calculateCost prototype method.
