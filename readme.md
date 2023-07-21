@@ -34,7 +34,13 @@ None found.
     code:let costOfMedium = 10 let NumberOfToppings = 1 let toppingCost = 1.5 
     let cost = costOfMedium + numberOfToppings * toppingCost;
     Expected Output: 11.50
-    
+
+    // Test 2: It should return the value of total cost of pizza and delivery cost
+    code:let Pizza1Cost = 11.50 Let Pizza2Cost = 13.00 Let DeliveryCost = 5.00
+    Let totalPizzaCost = Pizza1Cost + Pizza2Cost + DeliveryCost 
+    Expected Output: 29.50
+     
+
     // Test the Pizza constructor and prototype method
     const myPizza = new Pizza(['anchovies', 'pineapple'], 'medium');
     const pizzaCost = myPizza.calculateCost();
