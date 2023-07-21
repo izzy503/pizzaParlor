@@ -39,17 +39,7 @@ None found.
     code:let Pizza1Cost = 11.50 Let Pizza2Cost = 13.00 Let DeliveryCost = 5.00
     Let totalPizzaCost = Pizza1Cost + Pizza2Cost + DeliveryCost 
     Expected Output: 29.50
-     
-
-    // Test the Pizza constructor and prototype method
-    const myPizza = new Pizza(['anchovies', 'pineapple'], 'medium');
-    const pizzaCost = myPizza.calculateCost();
-
-
-    // Test the Order constructor and prototype method
-    const myOrder = new Order([myPizza]);
-    const orderTotalCost = myOrder.calculateTotalCost();
-
+    
 # Customization
 
 You can customize the toppings, sizes, and cost calculation by modifying the JavaScript code in the javascript.js file. Update the topping options, size options, and the formula for calculating the cost in the Pizza constructor and calculateCost prototype method.
