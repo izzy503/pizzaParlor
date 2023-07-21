@@ -4,7 +4,6 @@ window.addEventListener('DOMContentLoaded', function () {
     function Pizza(toppings, size) {
         this.toppings = toppings;
         this.size = size;
-        console.log('Pizza object created:', this);
     }
 
     // Prototype method to calculate the cost of a pizza
@@ -51,7 +50,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
         // Create a new pizza object
         const pizza = new Pizza(toppings, size);
-        console.log('Pizza added:', pizza);
 
         // Add the pizza to the ordered pizzas array
         orderedPizzas.push(pizza);
@@ -84,9 +82,6 @@ window.addEventListener('DOMContentLoaded', function () {
     // Function to display the details of a specific pizza
     function displayPizzaDetails(pizzaIndex) {
         const pizza = orderedPizzas[pizzaIndex];
-        console.log(`Pizza ${pizzaIndex + 1} Details:`);
-        console.log('Toppings:', pizza.toppings);
-        console.log('Size:', pizza.size);
     }
 
     // Event listener for the Delivery checkbox
@@ -100,11 +95,11 @@ window.addEventListener('DOMContentLoaded', function () {
             totalCostElement.textContent = `Total Cost: $${calculateTotalCost().toFixed(
                 2
             )}`;
-            console.log('Delivery option selected');
+
         } else {
             addressSection.style.display = 'none';
             totalCostElement.textContent = '';
-            console.log('Delivery option deselected');
+
         }
     });
 
@@ -119,7 +114,7 @@ window.addEventListener('DOMContentLoaded', function () {
         // Display the total cost
         const totalCostElement = document.getElementById('total-cost');
         totalCostElement.textContent = `Total Cost: $${totalCost.toFixed(2)}`;
-        console.log('Total Cost: $' + totalCost.toFixed(2));
+
     });
 
     // Function to calculate the total cost of the order
@@ -146,7 +141,7 @@ window.addEventListener('DOMContentLoaded', function () {
     // Order constructor
     function Order(pizzas) {
         this.pizzas = pizzas;
-        console.log('Order object created:', this);
+
     }
 
     // Prototype method to calculate the total cost of an order
@@ -163,13 +158,11 @@ window.addEventListener('DOMContentLoaded', function () {
 
     // Test the Pizza constructor and prototype method
     const myPizza = new Pizza(['anchovies', 'pineapple'], 'medium');
-    console.log('Pizza constructor test:', myPizza);
     const pizzaCost = myPizza.calculateCost();
-    console.log('Pizza calculateCost() test:', '$' + pizzaCost.toFixed(2));
+
 
     // Test the Order constructor and prototype method
     const myOrder = new Order([myPizza]);
-    console.log('Order constructor test:', myOrder);
     const orderTotalCost = myOrder.calculateTotalCost();
-    console.log('Order calculateTotalCost() test:', '$' + orderTotalCost.toFixed(2));
+    
 });
